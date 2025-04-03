@@ -69,7 +69,7 @@ const Hero = () => {
 
         <div className="mt-16 grid grid-cols-3 gap-6 max-w-3xl w-full">
           <div className="card-gradient rounded-xl p-4 transform transition-all hover:scale-105 hover:shadow-lg">
-            <p className="text-ftty-orange font-bold text-3xl md:text-4xl mb-1">100+</p>
+            <p className="text-ftty-orange font-bold text-3xl md:text-4xl mb-1">20+</p>
             <p className="text-gray-300 text-sm md:text-base">Games Supported</p>
           </div>
           <div className="card-gradient rounded-xl p-4 transform transition-all hover:scale-105 hover:shadow-lg">
@@ -77,7 +77,7 @@ const Hero = () => {
             <p className="text-gray-300 text-sm md:text-base">Commission Fee</p>
           </div>
           <div className="card-gradient rounded-xl p-4 transform transition-all hover:scale-105 hover:shadow-lg">
-            <p className="text-ftty-orange font-bold text-3xl md:text-4xl mb-1">10K+</p>
+            <p className="text-ftty-orange font-bold text-3xl md:text-4xl mb-1">50+</p>
             <p className="text-gray-300 text-sm md:text-base">Beta Users</p>
           </div>
         </div>

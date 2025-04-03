@@ -23,23 +23,14 @@ import {
                 The future of gaming asset transactions. Buy, sell and trade gaming items with crypto.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-ftty-orange transition-colors">
+                <a href="https://x.com/FattyC35481" className="text-gray-400 hover:text-ftty-orange transition-colors">
                   <FaTwitter size={20} />
                 </a>
                 <a href="#" className="text-gray-400 hover:text-ftty-orange transition-colors">
                   <FaDiscord size={20} />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-ftty-orange transition-colors">
+                <a href="https://t.me/FattyPattyCoin" className="text-gray-400 hover:text-ftty-orange transition-colors">
                   <FaTelegram size={20} />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-ftty-orange transition-colors">
-                  <FaGithub size={20} />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-ftty-orange transition-colors">
-                  <FaMedium size={20} />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-ftty-orange transition-colors">
-                  <FaReddit size={20} />
                 </a>
               </div>
             </div>
@@ -59,7 +50,6 @@ import {
               <ul className="space-y-3">
                 <li><a href="#" className="text-gray-300 hover:text-ftty-orange transition-colors">Whitepaper</a></li>
                 <li><a href="#" className="text-gray-300 hover:text-ftty-orange transition-colors">Documentation</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-ftty-orange transition-colors">Token Economics</a></li>
                 <li><a href="#" className="text-gray-300 hover:text-ftty-orange transition-colors">FAQs</a></li>
               </ul>
             </div>
@@ -70,7 +60,6 @@ import {
                 <li><a href="#" className="text-gray-300 hover:text-ftty-orange transition-colors">Terms of Service</a></li>
                 <li><a href="#" className="text-gray-300 hover:text-ftty-orange transition-colors">Privacy Policy</a></li>
                 <li><a href="#" className="text-gray-300 hover:text-ftty-orange transition-colors">Cookie Policy</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-ftty-orange transition-colors">Risk Disclosure</a></li>
               </ul>
             </div>
           </div>

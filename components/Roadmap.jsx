@@ -77,45 +77,49 @@ const Roadmap = () => {
   const roadmapItems = [
     {
       quarter: "Q2 2025",
-      title: "Development Phase",
+      title: "Platform Launch Phase",
       description: [
-        "Team formation and project planning",
-        "Technical architecture development",
-        "Smart contract development begins",
-        "Initial community building"
+        "Launch FattyPatty on Smart Chains",
+        "Launch Phase 1 of the “Pay to Play” for gamers crypto payment platform.",
+        "Integrate a “Quick Pay API with QR Codes” into the gaming companies website.",
+        "Add a section on the website for “IWO”."
       ],
       isActive: true
     },
     {
       quarter: "Q3 2025",
-      title: "Private Testing",
+      title: "Development Phase",
       description: [
-        "Alpha version launch for private testing",
-        "Security audits of smart contracts",
-        "Partnership discussions with game developers",
-        "Community expansion and ambassador program"
+        "Add categories like e-commerce and payments to enable crypto transactions for gaming businesses.",
+        "Create our own branded wallet.",
+        "Add an NFT section for artists and collectors to sell designs and collectibles.",
+        "Add a Finance section for PC gaming companies to raise capital."
       ],
       isActive: false
     },
     {
       quarter: "Q4 2025",
-      title: "Token Launch & Beta",
+      title: "Ecosystem Expansion",
       description: [
-        "FTTY token launch and IDO",
-        "Public beta platform release",
-        "Initial game integrations (10+ games)",
-        "Marketing campaign kickoff"
+        "Register Corporation in the State of Delaware",
+        "Prepare and file for the CEXs",
+        "Wrap $FTTY Cross Platform Integration",
+        "Trezor Integration for $FTTY",
+        "Starting FTTYTRAC Build",
+        "Hire Full-Time Core Team"
       ],
       isActive: false
     },
     {
       quarter: "Q1 2026",
-      title: "Full Launch & Expansion",
+      title: "Marketplace & Token Growth",
       description: [
-        "Official platform launch",
-        "Mobile application release",
-        "100+ game integrations",
-        "Expansion of ecosystem features"
+        "Opensea Site Listing & Integration",
+        "Expand NFT Capabilities & Partnerships",
+        "Secure Chameleon = Mobile $FTTY Integration",
+        "Carbon Credit Platform",
+        "Update $FTTY Wallets",
+        "Major Exchange Listing",
       ],
       isActive: false
     }

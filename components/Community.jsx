@@ -62,26 +62,21 @@ const Community = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-16">
-            <a href="#" className="col-span-1 card-gradient rounded-xl p-6 flex flex-col items-center justify-center transform transition-all hover:scale-105 hover:shadow-lg group">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            {/* <a href="#" className="col-span-1 card-gradient rounded-xl p-6 flex flex-col items-center justify-center transform transition-all hover:scale-105 hover:shadow-lg group">
               <FaDiscord className="text-ftty-orange text-4xl md:text-5xl mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-medium">Discord</h3>
               <p className="text-gray-400 text-sm text-center mt-2">Join our server</p>
-            </a>
-            <a href="#" className="col-span-1 card-gradient rounded-xl p-6 flex flex-col items-center justify-center transform transition-all hover:scale-105 hover:shadow-lg group">
+            </a> */}
+            <a href="https://t.me/FattyPattyCoin" className="col-span-1 card-gradient rounded-xl p-6 flex flex-col items-center justify-center transform transition-all hover:scale-105 hover:shadow-lg group">
               <FaTelegram className="text-ftty-orange text-4xl md:text-5xl mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-medium">Telegram</h3>
               <p className="text-gray-400 text-sm text-center mt-2">Get instant updates</p>
             </a>
-            <a href="#" className="col-span-1 card-gradient rounded-xl p-6 flex flex-col items-center justify-center transform transition-all hover:scale-105 hover:shadow-lg group">
+            <a href="https://x.com/FattyC35481" className="col-span-1 card-gradient rounded-xl p-6 flex flex-col items-center justify-center transform transition-all hover:scale-105 hover:shadow-lg group">
               <FaTwitter className="text-ftty-orange text-4xl md:text-5xl mb-4 group-hover:text-white transition-colors" />
               <h3 className="text-xl font-medium">Twitter</h3>
               <p className="text-gray-400 text-sm text-center mt-2">Follow our journey</p>
-            </a>
-            <a href="#" className="col-span-1 card-gradient rounded-xl p-6 flex flex-col items-center justify-center transform transition-all hover:scale-105 hover:shadow-lg group">
-              <FaReddit className="text-ftty-orange text-4xl md:text-5xl mb-4 group-hover:text-white transition-colors" />
-              <h3 className="text-xl font-medium">Reddit</h3>
-              <p className="text-gray-400 text-sm text-center mt-2">Join discussions</p>
             </a>
             <div className="col-span-1 card-gradient rounded-xl p-6 flex flex-col items-center justify-center">
               <div className="text-ftty-orange text-4xl md:text-5xl mb-4">10K+</div>
