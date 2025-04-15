@@ -74,7 +74,7 @@ const ChainCard = ({
             </>
           ) : (
             <>
-              <FaTimes />
+              {/* <FaTimes /> */}
               <span className="text-sm font-medium">Coming Soon</span>
             </>
           )}
@@ -147,14 +147,14 @@ const Chains = () => {
     {
       name: "Polygon",
       icon: <SiPolygon />,
-      isPaired: true,
+      isPaired: false,
       contractAddress: "0x68f1e54aedb8F42d2D73AD48E2A56F7914bB79B6",
       color: "text-purple-500"
     },
     {
       name: "Binance Smart Chain",
       icon: <SiBinance />,
-      isPaired: true,
+      isPaired: false,
       contractAddress: "0x68f1e54aedb8F42d2D73AD48E2A56F7914bB79B6",
       color: "text-yellow-500"
     },

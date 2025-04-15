@@ -29,7 +29,7 @@ import {
                 <a href="#" className="text-gray-400 hover:text-ftty-orange transition-colors">
                   <FaDiscord size={20} />
                 </a>
-                <a href="https://t.me/FattyPattyCoin" className="text-gray-400 hover:text-ftty-orange transition-colors">
+                <a href="#" className="text-gray-400 hover:text-ftty-orange transition-colors">
                   <FaTelegram size={20} />
                 </a>
               </div>
