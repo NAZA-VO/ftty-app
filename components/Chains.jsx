@@ -66,7 +66,7 @@ const ChainCard = ({
           </div>
           <h3 className="text-xl font-semibold">{name}</h3>
         </div>
-        <div className={`${isPaired ? 'text-green-500' : 'text-red-500'} flex items-center gap-2`}>
+        <div className={`${isPaired ? 'text-green-500' : 'text-orange-500'} flex items-center gap-2`}>
           {isPaired ? (
             <>
               <FaCheck />

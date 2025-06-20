@@ -31,11 +31,11 @@ const Hero = () => {
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 rounded-full bg-ftty-orange opacity-10 animate-pulse-slow"></div>
-      <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ftty-orange opacity-10 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-ftty-orange opacity-5 blur-3xl"></div>
+      <div className="absolute top-20 left-10 w-20 h-20 rounded-full bg-ftty-orange opacity-10 animate-pulse-slow -z-10"></div>
+      <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ftty-orange opacity-10 animate-pulse-slow -z-10" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-ftty-orange opacity-5 blur-3xl -z-10"></div>
 
-      <div 
+      <div
         ref={heroRef}
         className="container mx-auto px-4 flex flex-col items-center text-center transition duration-1000 opacity-0 translate-y-10"
       >
@@ -53,7 +53,7 @@ const Hero = () => {
         </h1>
 
         <p className="text-lg md:text-xl text-gray-300 max-w-3xl mb-12">
-          The next-generation platform for buying, selling, and trading in-game assets 
+          The next-generation platform for buying, selling, and trading in-game assets
           using cryptocurrency. Secure, fast, and commission-free.
         </p>
 
@@ -62,8 +62,11 @@ const Hero = () => {
             <FaRocket />
             Get Early Access
           </button>
-          <button className="bg-transparent hover:bg-ftty-purple-light text-white border border-ftty-orange px-8 py-4 rounded-full text-lg font-medium transition-all hover:border-ftty-orange-light">
-            Learn More
+          <button
+            onClick={() => window.open('/whitepaper.pdf', '_blank')}
+            className="bg-transparent hover:bg-ftty-purple-light text-white border border-ftty-orange px-8 py-4 rounded-full text-lg font-medium transition-all hover:border-ftty-orange-light"
+          >
+            Whitepaper
           </button>
         </div>
 
