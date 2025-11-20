@@ -2,11 +2,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { FaWallet, FaBars, FaTimes } from 'react-icons/fa';
-import { 
-  AppKitButton, 
+import {  
   AppKitConnectButton, 
-  AppKitAccountButton, 
-  AppKitNetworkButton 
 } from "@reown/appkit/react";
 
 const Navbar = () => {
