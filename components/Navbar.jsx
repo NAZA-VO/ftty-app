@@ -82,7 +82,7 @@ const Navbar = () => {
             >
               Roadmap
             </a>
-          
+            <AppKitConnectButton />
           </div>
         </div>
       )}
