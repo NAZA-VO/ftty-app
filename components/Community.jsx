@@ -57,7 +57,7 @@ const Community = () => {
             <span className="text-ftty-orange font-medium">Join The Revolution</span>
             <h2 className="text-3xl md:text-5xl font-bold mt-2 mb-6">Become Part of Our Community</h2>
             <p className="text-gray-300 max-w-3xl mx-auto">
-              Connect with like-minded gamers and traders in our growing community. 
+    
               Get exclusive updates, participate in discussions, and help shape the future of FTTY.
             </p>
           </div>
