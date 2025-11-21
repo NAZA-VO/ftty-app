@@ -95,7 +95,7 @@ const Roadmap = () => {
         "Add an NFT section for artists and collectors to sell designs and collectibles.",
         "Add a Finance section for PC gaming companies to raise capital."
       ],
-      isActive: false
+      isActive: true
     },
     {
       quarter: "Q4 2025",
