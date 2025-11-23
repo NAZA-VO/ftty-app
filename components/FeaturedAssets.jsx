@@ -153,7 +153,7 @@ const FeaturedAssets = () => {
     {
       id: '3',
       name: 'Rare Magic Staff',
-      image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=400&fit=crop',
+      image: '/staff.jpeg',
       floorPrice: '0.75',
       topOffer: '0.88',
       volume: '25.3',
