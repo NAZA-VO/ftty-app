@@ -105,7 +105,7 @@ import Link from 'next/link';
   );
 };
 
-/* const FeaturedAssets = () => {
+const FeaturedAssets = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -228,7 +228,7 @@ import Link from 'next/link';
       </div>
     </section>
   );
-}; */
+};
 
-/* export default FeaturedAssets; */
+export default FeaturedAssets;
 
