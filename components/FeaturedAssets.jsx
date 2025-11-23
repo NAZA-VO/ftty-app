@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { FaEthereum, FaChartLine, FaCoins, FaLayerGroup } from 'react-icons/fa';
 import Link from 'next/link';
 
-/* const AssetCard = ({ asset, delay }) => {
+ const AssetCard = ({ asset, delay }) => {
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -103,7 +103,7 @@ import Link from 'next/link';
       </div>
     </Link>
   );
-}; */
+};
 
 /* const FeaturedAssets = () => {
   const sectionRef = useRef(null);
