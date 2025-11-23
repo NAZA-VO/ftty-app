@@ -144,7 +144,7 @@ const FeaturedAssets = () => {
     {
       id: '2',
       name: 'Epic Space Helmet',
-      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=400&fit=crop',
+      image: '/helmet.jpeg',
       floorPrice: '0.28',
       topOffer: '0.35',
       volume: '8.2',
