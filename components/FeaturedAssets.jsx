@@ -189,15 +189,6 @@ const FeaturedAssets = () => {
             />
           ))}
         </div>
-
-        <div className="text-center mt-12">
-          <Link 
-            href="/marketplace"
-            className="inline-block bg-transparent hover:bg-ftty-purple-light text-ftty-orange border border-ftty-orange px-8 py-3 rounded-full text-lg font-medium transition-all hover:border-ftty-orange-light hover:scale-105"
-          >
-            View All Assets
-          </Link>
-        </div>
       </div>
     </section>
   );
