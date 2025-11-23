@@ -158,33 +158,6 @@ const FeaturedAssets = () => {
       topOffer: '0.88',
       volume: '25.3',
       supply: '500'
-    },
-    {
-      id: '4',
-      name: 'Mythical Shield',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-      floorPrice: '0.62',
-      topOffer: '0.70',
-      volume: '18.7',
-      supply: '750'
-    },
-    {
-      id: '5',
-      name: 'Ancient Armor Set',
-      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=400&fit=crop',
-      floorPrice: '1.25',
-      topOffer: '1.45',
-      volume: '42.1',
-      supply: '300'
-    },
-    {
-      id: '6',
-      name: 'Enchanted Bow',
-      image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=400&fit=crop',
-      floorPrice: '0.38',
-      topOffer: '0.45',
-      volume: '9.8',
-      supply: '1,800'
     }
   ];
 
