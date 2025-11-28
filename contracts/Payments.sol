@@ -23,3 +23,11 @@ contract Payments is Ownable, ReentrancyGuard, Pausable {
     event PlatformFeeUpdated(uint256 newBps);
     event FeeCollectorUpdated(address newCollector);
     event EmergencyWithdraw(address indexed recipient, uint256 amount);
+
+constructor(address _feeCollector, uint256 _platformFeeBps) {
+        require(_feeCollector != address(0), "invalid fee collector");
+        require(_platformFeeBps <= 10_000, "bps too large");
+        feeCollector = _feeCollector;
+        platformFeeBps = _platformFeeBps;
+    }
+
