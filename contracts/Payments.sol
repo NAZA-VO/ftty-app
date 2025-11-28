@@ -105,3 +105,17 @@ constructor(address _feeCollector, uint256 _platformFeeBps) {
         platformFeeBps = bps;
         emit PlatformFeeUpdated(bps);
     }
+
+function setFeeCollector(address collector) external onlyOwner {
+        require(collector != address(0), "invalid");
+        feeCollector = collector;
+        emit FeeCollectorUpdated(collector);
+    }
+
+    function pause() external onlyOwner {
+        _pause();
+    }
+
+    function unpause() external onlyOwner {
+        _unpause();
+    }
