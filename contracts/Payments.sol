@@ -76,3 +76,10 @@ constructor(address _feeCollector, uint256 _platformFeeBps) {
 
         emit Withdrawn(msg.sender, amount);
     }
+
+    /// @notice Withdraw ERC20 tokens (if contract holds tokens that belong to a recipient)
+    /// Note: This contract doesn't automatically credit ERC20 payments. Owner can credit via ownerCreditERC20.
+    function withdrawERC20(IERC20 token) external nonReentrant whenNotPaused {
+        // We keep a simple mapping for ERC20 pending balances by token+address in more advanced implementations.
+        revert("use ownerCreditERC20 pattern or extend contract");
+    }
