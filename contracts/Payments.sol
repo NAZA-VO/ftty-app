@@ -95,3 +95,13 @@ constructor(address _feeCollector, uint256 _platformFeeBps) {
         // (Implementation note provided below)
         revert("implement token bookkeeping if you need ERC20 pull-payments");
     }
+
+    // -------------------------
+    // Admin functions
+    // -------------------------
+
+    function setPlatformFeeBps(uint256 bps) external onlyOwner {
+        require(bps <= 10_000, "bps > 100%");
+        platformFeeBps = bps;
+        emit PlatformFeeUpdated(bps);
+    }
