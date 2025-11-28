@@ -119,3 +119,12 @@ function setFeeCollector(address collector) external onlyOwner {
     function unpause() external onlyOwner {
         _unpause();
     }
+
+     /// Emergency withdraw by owner (for recovery). Use carefully.
+    function emergencyWithdraw(address payable to, uint256 amount) external onlyOwner {
+        require(to != address(0), "invalid");
+        require(amount <= address(this).balance, "insufficient balance");
+        (bool sent, ) = to.call{value: amount}("");
+        require(sent, "transfer failed");
+        emit EmergencyWithdraw(to, amount);
+    }
