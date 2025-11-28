@@ -128,3 +128,17 @@ function setFeeCollector(address collector) external onlyOwner {
         require(sent, "transfer failed");
         emit EmergencyWithdraw(to, amount);
     }
+
+// -------------------------
+    // Internal helpers
+    // -------------------------
+
+    function _takePlatformFee(uint256 amount) internal returns (uint256 fee) {
+        if (platformFeeBps == 0) return 0;
+        fee = (amount * platformFeeBps) / 10_000;
+        if (fee == 0) return 0;
+
+        // transfer fee immediately
+        (bool ok, ) = payable(feeCollector).call{value: fee}("");
+        require(ok, "fee transfer failed");
+    }
