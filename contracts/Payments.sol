@@ -16,8 +16,8 @@ contract Payments is Ownable, ReentrancyGuard, Pausable {
     uint256 public platformFeeBps;
     address public feeCollector;
 
-   event Received(address indexed from, uint256 amount, string indexed reference);
-    event PaymentScheduled(address indexed from, address indexed to, uint256 amount, string indexed reference);
+    event Received(address indexed from, uint256 amount, string memo);
+    event PaymentScheduled(address indexed from, address indexed to, uint256 amount, string memo);
     event Withdrawn(address indexed recipient, uint256 amount);
     event ERC20Withdrawn(address indexed token, address indexed recipient, uint256 amount);
     event PlatformFeeUpdated(uint256 newBps);
@@ -39,8 +39,8 @@ constructor(address _feeCollector, uint256 _platformFeeBps) {
 
     /// @notice Send a payment to an address. Payment is credited to recipient's pendingWithdrawals.
     /// @param recipient recipient address
-    /// @param reference optional description/reference
-    function payTo(address recipient, string calldata reference) external payable whenNotPaused nonReentrant {
+    /// @param memo optional description/reference
+    function payTo(address recipient, string calldata memo) external payable whenNotPaused nonReentrant {
         require(msg.value > 0, "no value");
         require(recipient != address(0), "invalid recipient");
 
@@ -49,11 +49,11 @@ constructor(address _feeCollector, uint256 _platformFeeBps) {
 
         pendingWithdrawals[recipient] += net;
 
-        emit PaymentScheduled(msg.sender, recipient, net, reference);
+        emit PaymentScheduled(msg.sender, recipient, net, memo);
     }
 
      /// @notice Schedule a payment on behalf of the contract owner (owner-funded payout)
-    function ownerCredit(address recipient, uint256 amount, string calldata reference) external onlyOwner whenNotPaused {
+    function ownerCredit(address recipient, uint256 amount, string calldata memo) external onlyOwner whenNotPaused {
         require(recipient != address(0), "invalid recipient");
         require(address(this).balance >= amount, "insufficient contract balance");
 
@@ -62,7 +62,7 @@ constructor(address _feeCollector, uint256 _platformFeeBps) {
 
         pendingWithdrawals[recipient] += net;
 
-        emit PaymentScheduled(msg.sender, recipient, net, reference);
+        emit PaymentScheduled(msg.sender, recipient, net, memo);
     }
 
     /// @notice Withdraw accumulated ETH owed to sender
@@ -85,7 +85,7 @@ constructor(address _feeCollector, uint256 _platformFeeBps) {
     }
 
     /// @notice Owner can credit ERC20 tokens to a recipient (pull pattern).
-    function ownerCreditERC20(IERC20 token, address recipient, uint256 amount, string calldata reference) external onlyOwner whenNotPaused {
+    function ownerCreditERC20(IERC20 token, address recipient, uint256 amount, string calldata memo) external onlyOwner whenNotPaused {
         require(recipient != address(0), "invalid recipient");
         require(amount > 0, "invalid amount");
 
