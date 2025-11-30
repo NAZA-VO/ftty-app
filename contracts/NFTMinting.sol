@@ -25,3 +25,8 @@ contract SimpleMintNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
     uint256 public maxPerWallet = 5;                   // default per-wallet limit
     uint256 public mintPrice = 0.05 ether;             // default price per mint
     bool    public saleIsActive = false;
+
+    // URI handling
+    string private baseTokenURI;
+    string private hiddenMetadataURI;
+    bool   public revealed = false;
