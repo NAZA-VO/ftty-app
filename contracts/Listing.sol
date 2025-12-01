@@ -29,3 +29,6 @@ uint256 public platformFeePercent; // e.g., 250 = 2.5%
         uint256 price;
         bool active;
     }
+
+    uint256 public listingCounter = 0;
+    mapping(uint256 => Listing> public listings;
