@@ -65,3 +65,8 @@ contract GameItemNFT is ERC721URIStorage, AccessControl, Pausable {
 
         // Set initial stats
         itemStats[tokenId] = GameStats(level, power, rarity);
+
+        // Build metadata URI: baseURI + tokenId.json
+        string memory uri = string(
+            abi.encodePacked(baseTokenURI, tokenId.toString(), ".json")
+        );
