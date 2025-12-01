@@ -132,3 +132,8 @@ function setPlatformFee(uint256 newFeePercent) external onlyRole(MARKET_ADMIN) {
 
         // Transfer NFT to buyer
         IERC721(l.nft).safeTransferFrom(l.seller, msg.sender, l.tokenId);
+
+        emit ItemSold(listingId, msg.sender, msg.value);
+    }
+}
+
