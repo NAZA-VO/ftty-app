@@ -60,3 +60,7 @@ uint256 public platformFeePercent; // e.g., 250 = 2.5%
 // --------------------------------------------------------
     // ADMIN
     // --------------------------------------------------------
+
+function setPlatformFee(uint256 newFeePercent) external onlyRole(MARKET_ADMIN) {
+        platformFeePercent = newFeePercent;
+    }
