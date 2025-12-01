@@ -27,3 +27,13 @@ pragma solidity ^0.8.19;
     function setFeeReceiver(address newReceiver) external onlyRole(MARKET_ADMIN) {
         feeReceiver = newReceiver;
     }
+
+    // ----------------------------------------
+    // Create Offer (funds locked)
+    // ----------------------------------------
+
+    function createOffer(address nft, uint256 tokenId)
+        external
+        payable
+        nonReentrant
+        returns (uint256)
