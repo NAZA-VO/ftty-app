@@ -95,3 +95,16 @@ function setPlatformFee(uint256 newFeePercent) external onlyRole(MARKET_ADMIN) {
         emit ItemListed(listingCounter, msg.sender, nft, tokenId, price);
         return listingCounter;
     }
+    // --------------------------------------------------------
+    // CANCEL LISTING
+    // --------------------------------------------------------
+
+    function cancelListing(uint256 listingId) external {
+        Listing storage l = listings[listingId];
+        require(l.active, "Listing not active");
+        require(l.seller == msg.sender, "Not seller");
+
+        l.active = false;
+
+        emit ListingCancelled(listingId);
+    }
