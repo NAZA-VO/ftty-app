@@ -92,3 +92,6 @@ function setPlatformFee(uint256 newFeePercent) external onlyRole(MARKET_ADMIN) {
             price,
             true
         );
+        emit ItemListed(listingCounter, msg.sender, nft, tokenId, price);
+        return listingCounter;
+    }
