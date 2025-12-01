@@ -57,3 +57,17 @@ contract SimpleMintNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
      * @notice Public payable mint.
      * @param quantity Number of tokens to mint
      */
+
+     function mint(uint256 quantity) external payable nonReentrant {
+        require(saleIsActive, "Sale is not active");
+        require(quantity > 0, "Quantity must be > 0");
+        uint256 supply = totalSupply();
+        require(supply + quantity <= MAX_SUPPLY, "Exceeds max supply");
+        require(walletMints[msg.sender] + quantity <= maxPerWallet, "Exceeds wallet limit");
+        require(msg.value >= mintPrice * quantity, "Insufficient ETH sent");
+
+        // Mint loop (gas: consider batch-mint patterns if you expect big quantity per tx)
+        for (uint256 i = 0; i < quantity; i++) {
+            uint256 tokenId = supply + i + 1; // token IDs start at 1
+            _safeMint(msg.sender, tokenId);
+        }
