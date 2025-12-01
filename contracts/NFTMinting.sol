@@ -94,3 +94,12 @@ contract SimpleMintNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
             _safeMint(to, tokenId);
         }
     }
+
+    // ----------- READ METADATA -----------
+
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        require(_exists(tokenId), "URI query for nonexistent token");
+
+        if (!revealed) {
+            return hiddenMetadataURI;
+        }
