@@ -59,3 +59,6 @@ contract GameItemNFT is ERC721URIStorage, AccessControl, Pausable {
     ) external onlyRole(GAME_ADMIN) whenNotPaused {
         _tokenIdTracker.increment();
         uint256 tokenId = _tokenIdTracker.current();
+
+         // Mint NFT
+        _safeMint(to, tokenId);
