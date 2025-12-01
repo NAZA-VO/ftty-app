@@ -118,3 +118,6 @@ function acceptOffer(uint256 offerId)
         uint256 sellerAmount = o.amount - fee;
         // Pay seller
         payable(msg.sender).transfer(sellerAmount);
+
+         // Pay platform
+        payable(feeReceiver).transfer(fee);
