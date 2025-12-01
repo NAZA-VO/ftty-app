@@ -93,5 +93,7 @@ function updateStats(
 
         emit StatsUpdated(tokenId, level, power, rarity);
 
+        
+
 
 
