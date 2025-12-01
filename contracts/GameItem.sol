@@ -84,7 +84,8 @@ function updateStats(
         uint256 level,
         uint256 power,
         uint256 rarity
-    ) 
+    ) external onlyRole(GAME_ADMIN) whenNotPaused {
+        require(_exists(tokenId), "Item does not exist");
 
 
 
