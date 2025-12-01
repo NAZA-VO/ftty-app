@@ -48,3 +48,11 @@ uint256 public platformFeePercent; // e.g., 250 = 2.5%
         address indexed buyer,
         uint256 price
     );
+
+    constructor(uint256 _feePercent, address _feeReceiver) {
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(MARKET_ADMIN, msg.sender);
+
+        platformFeePercent = _feePercent;
+        feeReceiver = _feeReceiver;
+    }
