@@ -71,3 +71,15 @@ contract SimpleMintNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
             uint256 tokenId = supply + i + 1; // token IDs start at 1
             _safeMint(msg.sender, tokenId);
         }
+
+        walletMints[msg.sender] += quantity;
+        emit Minted(msg.sender, quantity);
+
+        // refund excess ETH (if user sent too much)
+        uint256 excess = msg.value - (mintPrice * quantity);
+        if (excess > 0) {
+            // it's safe to use call here because we're sending to msg.sender.
+            (bool sent, ) = payable(msg.sender).call{value: excess}("");
+            require(sent, "Refund failed");
+        }
+    }
