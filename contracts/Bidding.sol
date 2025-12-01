@@ -95,3 +95,7 @@ pragma solidity ^0.8.19;
     // ----------------------------------------
     // Seller Accepts Offer (transfer NFT & funds)
     // ----------------------------------------
+function acceptOffer(uint256 offerId)
+        external
+        nonReentrant
+    {
