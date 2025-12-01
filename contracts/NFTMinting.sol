@@ -83,3 +83,14 @@ contract SimpleMintNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
             require(sent, "Refund failed");
         }
     }
+
+      // Owner reserve mint (for team, giveaways, airdrops)
+    function reserveMint(address to, uint256 quantity) external onlyOwner {
+        require(quantity > 0, "Quantity must be > 0");
+        uint256 supply = totalSupply();
+        require(supply + quantity <= MAX_SUPPLY, "Exceeds max supply");
+        for (uint256 i = 0; i < quantity; i++) {
+            uint256 tokenId = supply + i + 1;
+            _safeMint(to, tokenId);
+        }
+    }
