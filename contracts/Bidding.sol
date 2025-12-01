@@ -111,3 +111,8 @@ function acceptOffer(uint256 offerId)
             IERC721(o.nft).isApprovedForAll(msg.sender, address(this)),
             "Marketplace not approved"
         );
+        o.active = false;
+
+        // Calculate platform fee
+        uint256 fee = (o.amount * platformFeePercent) / 10000;
+        uint256 sellerAmount = o.amount - fee;
