@@ -114,3 +114,6 @@ function setPlatformFee(uint256 newFeePercent) external onlyRole(MARKET_ADMIN) {
 
     function buyItem(uint256 listingId) external payable nonReentrant {
         Listing storage l = listings[listingId];
+
+        require(l.active, "Listing not active");
+        require(msg.value == l.price, "Incorrect price");
