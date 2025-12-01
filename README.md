@@ -162,18 +162,21 @@ A whitepaper is available at `/public/whitepaper.pdf` and can be accessed via th
 
 The project includes two Solidity smart contracts for core marketplace functionality:
 
-### NFTMinting.sol (SimpleMintNFT)
+### NFTMinting.sol (`SimpleMintNFT`)
 
 An ERC721 NFT minting contract built with OpenZeppelin libraries:
 
 - **Features**:
-  - ERC721Enumerable for easy token enumeration
-  - Ownable for admin controls
-  - ReentrancyGuard for secure withdrawals
+  - `ERC721Enumerable` for easy token enumeration
+  - `Ownable` for admin controls
+  - `ReentrancyGuard` for secure withdrawals and minting
   - Configurable supply limits (max 10,000 tokens)
-  - Per-wallet minting limits
+  - Per-wallet minting limits to prevent whales
   - Revealable metadata with hidden URI support
-  - Sale activation controls
+  - Public sale activation controls
+  - Owner-only `reserveMint` for team mints, giveaways, and airdrops
+  - Automatic refund of excess ETH sent during mint
+  - `receive`/`fallback` handlers to accept direct ETH (withdrawable by owner)
 
 - **Key Parameters**:
   - `MAX_SUPPLY`: 10,000 total NFTs
@@ -181,25 +184,41 @@ An ERC721 NFT minting contract built with OpenZeppelin libraries:
   - `mintPrice`: 0.05 ETH per mint (configurable)
   - `saleIsActive`: Public sale toggle
 
+- **Key Functions**:
+  - `mint(uint256 quantity)`: Public mint with per-wallet limits and payment checks
+  - `reserveMint(address to, uint256 quantity)`: Owner reserve mint
+  - `setBaseURI(string uri)`: Set revealed metadata base URI
+  - `setHiddenMetadataURI(string uri)`: Set placeholder/hidden metadata URI
+  - `reveal()`: One-way reveal switch for collection metadata
+  - `setMintPrice(uint256 newPrice)`: Update mint price
+  - `setMaxPerWallet(uint256 newMax)`: Update per-wallet limits
+  - `toggleSale()`: Enable/disable public sale
+  - `withdraw(address payable to)`: Withdraw contract ETH balance to owner-controlled address
+
 ### Payments.sol
 
 A secure payment processing contract for marketplace transactions:
 
 - **Features**:
-  - Pull-pattern withdrawals for recipients
-  - Configurable platform fees (basis points)
+  - Pull-pattern ETH withdrawals for recipients (`pendingWithdrawals`)
+  - Configurable platform fees in basis points (supports 0–100%)
+  - Dedicated `feeCollector` address for routing platform fees
   - Pausable for emergency stops
-  - ReentrancyGuard protection
-  - Ownable admin controls
-  - Support for ETH payments
-  - Event logging for all transactions
+  - `ReentrancyGuard` protection on state-changing calls
+  - `Ownable` admin controls
+  - Support for direct ETH transfers via `receive`
+  - Event logging for all key actions (payments, withdrawals, config changes)
+  - Optional ERC20 pull-payment scaffolding (disabled by default via `revert`)
 
 - **Key Functions**:
-  - `payTo()`: Send payment to a recipient (with platform fee)
-  - `withdraw()`: Recipients withdraw their accumulated balance
-  - `ownerCredit()`: Owner can credit funds to recipients
-  - `setPlatformFeeBps()`: Configure platform fee percentage
-  - `pause()`/`unpause()`: Emergency controls
+  - `payTo(address recipient, string memo)`: Schedule an ETH payment to a recipient (with platform fee)
+  - `ownerCredit(address recipient, uint256 amount, string memo)`: Owner-funded payout from contract balance
+  - `withdraw()`: Recipients withdraw their accumulated ETH balance
+  - `setPlatformFeeBps(uint256 bps)`: Configure platform fee percentage
+  - `setFeeCollector(address collector)`: Set/update the fee collector address
+  - `pause()` / `unpause()`: Global pause controls
+  - `emergencyWithdraw(address payable to, uint256 amount)`: Owner-only emergency fund recovery
+  - `ownerCreditERC20(...)` / `withdrawERC20(...)`: ERC20 extension points for future token payments (currently stubbed)
 
 Both contracts use OpenZeppelin's battle-tested security libraries and follow best practices for secure smart contract development.
 
