@@ -40,3 +40,11 @@ contract GameItemNFT is ERC721URIStorage, AccessControl, Pausable {
     event ItemMinted(address indexed to, uint256 tokenId, string metadata);
     event StatsUpdated(uint256 tokenId, uint256 level, uint256 power, uint256 rarity);
     event BaseURIUpdated(string newBaseURI);
+
+    constructor(string memory baseURI) ERC721("GameItem", "GMI") {
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(GAME_ADMIN, msg.sender);
+
+        baseTokenURI = baseURI;
+    }
+    
