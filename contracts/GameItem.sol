@@ -23,3 +23,13 @@ contract GameItemNFT is ERC721URIStorage, AccessControl, Pausable {
     bytes32 public constant GAME_ADMIN = keccak256("GAME_ADMIN");
 
     Counters.Counter private _tokenIdTracker;
+
+    // Base metadata URI
+    string private baseTokenURI;
+
+    // Struct for in-game attributes
+    struct GameStats {
+        uint256 level;
+        uint256 power;
+        uint256 rarity;
+    }
