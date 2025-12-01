@@ -119,3 +119,7 @@ contract SimpleMintNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
         hiddenMetadataURI = uri;
         emit HiddenURISet(uri);
     }
+    function reveal() external onlyOwner {
+        revealed = true;
+        emit Revealed(true);
+    }
