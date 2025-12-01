@@ -87,3 +87,8 @@ pragma solidity ^0.8.19;
         Offer storage o = offers[offerId];
         require(o.active, "Offer inactive");
         require(o.offerer == msg.sender, "Not offer owner");
+ o.active = false;
+        payable(o.offerer).transfer(o.amount);
+
+        emit OfferCancelled(offerId);
+    }
