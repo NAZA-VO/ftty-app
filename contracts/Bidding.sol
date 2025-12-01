@@ -99,3 +99,10 @@ function acceptOffer(uint256 offerId)
         external
         nonReentrant
     {
+        Offer storage o = offers[offerId];
+        require(o.active, "Offer inactive");
+        // Ensure msg.sender is current owner
+        require(
+            IERC721(o.nft).ownerOf(o.tokenId) == msg.sender,
+            "Not NFT owner"
+        );
