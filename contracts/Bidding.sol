@@ -49,3 +49,11 @@ pragma solidity ^0.8.19;
             msg.value,
             true
         );
+
+        emit OfferCreated(
+            offerCounter,
+            msg.sender,
+            nft,
+            tokenId,
+            msg.value
+        );
