@@ -64,3 +64,8 @@ pragma solidity ^0.8.19;
     // ----------------------------------------
     // Update Offer (add more ETH)
     // ----------------------------------------
+
+    function increaseOffer(uint256 offerId)
+        external
+        payable
+        nonReentrant
