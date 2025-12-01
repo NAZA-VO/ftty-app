@@ -116,3 +116,5 @@ function acceptOffer(uint256 offerId)
         // Calculate platform fee
         uint256 fee = (o.amount * platformFeePercent) / 10000;
         uint256 sellerAmount = o.amount - fee;
+        // Pay seller
+        payable(msg.sender).transfer(sellerAmount);
