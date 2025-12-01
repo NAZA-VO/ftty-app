@@ -19,3 +19,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 contract GameItemNFT is ERC721URIStorage, AccessControl, Pausable {
     using Counters for Counters.Counter;
     using Strings for uint256;
+
+    bytes32 public constant GAME_ADMIN = keccak256("GAME_ADMIN");
+
+    Counters.Counter private _tokenIdTracker;
