@@ -121,6 +121,19 @@ function setBaseURI(string calldata newBaseURI)
     function unpause() external onlyRole(GAME_ADMIN) {
         _unpause();
     }
+    // -----------------------------
+    // Safety overrides
+    // -----------------------------
+
+    function _beforeTokenTransfer(
+        address from,
+        address to,
+        uint256 tokenId,
+        uint256 batchSize
+    ) internal override whenNotPaused {
+        super._beforeTokenTransfer(from, to, tokenId, batchSize);
+    }
+}
 
 
 
