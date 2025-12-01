@@ -33,3 +33,6 @@ contract GameItemNFT is ERC721URIStorage, AccessControl, Pausable {
         uint256 power;
         uint256 rarity;
     }
+
+    // Storage for each token's stats
+    mapping(uint256 => GameStats) public itemStats;
