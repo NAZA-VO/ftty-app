@@ -129,3 +129,6 @@ function setPlatformFee(uint256 newFeePercent) external onlyRole(MARKET_ADMIN) {
 
 // Pay platform
         payable(feeReceiver).transfer(fee);
+
+        // Transfer NFT to buyer
+        IERC721(l.nft).safeTransferFrom(l.seller, msg.sender, l.tokenId);
