@@ -80,3 +80,7 @@ pragma solidity ^0.8.19;
     // ----------------------------------------
     // Cancel Offer (refund)
     // ----------------------------------------
+    function cancelOffer(uint256 offerId)
+        external
+        nonReentrant
+    {
