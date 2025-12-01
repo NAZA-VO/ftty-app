@@ -92,3 +92,6 @@ pragma solidity ^0.8.19;
 
         emit OfferCancelled(offerId);
     }
+    // ----------------------------------------
+    // Seller Accepts Offer (transfer NFT & funds)
+    // ----------------------------------------
