@@ -24,3 +24,16 @@ pragma solidity ^0.8.20;
         platformFeeRecipient = _recipient;
         platformFeeBps = _feeBps;
     }
+
+    /**
+     * @notice Updates the platform fee percentage.
+     * @dev Should be restricted by onlyOwner in child contract.
+     */
+
+      function _setPlatformFee(uint96 _newFeeBps)
+        internal
+        validBps(_newFeeBps)
+    {
+        platformFeeBps = _newFeeBps;
+        emit PlatformFeeUpdated(_newFeeBps);
+    }
