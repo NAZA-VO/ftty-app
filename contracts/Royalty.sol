@@ -58,3 +58,8 @@ contract RoyaltyManager is ERC2981, AccessControl {
         uint256 tokenId,
         address receiver,
         uint96 feeNumerator
+          ) external onlyRole(ROYALTY_ADMIN) {
+        require(receiver != address(0), "Invalid receiver");
+        _setTokenRoyalty(tokenId, receiver, feeNumerator);
+        emit TokenRoyaltySet(tokenId, receiver, feeNumerator);
+    }
