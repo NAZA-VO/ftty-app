@@ -46,3 +46,14 @@ pragma solidity ^0.8.20;
         platformFeeRecipient = _newRecipient;
         emit PlatformFeeRecipientUpdated(_newRecipient);
     }
+     /**
+     * @notice Returns how much platform fee should be taken from a sale.
+     */
+    function getPlatformFeeAmount(uint256 salePrice)
+        public
+        view
+        returns (uint256)
+    {
+        return (salePrice * platformFeeBps) / 10000;
+    }
+}
