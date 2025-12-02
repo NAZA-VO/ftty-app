@@ -37,3 +37,12 @@ pragma solidity ^0.8.20;
         platformFeeBps = _newFeeBps;
         emit PlatformFeeUpdated(_newFeeBps);
     }
+    /**
+     * @notice Updates the fee recipient.
+     * @dev Should be restricted via onlyOwner in child contract.
+     */
+    function _setPlatformFeeRecipient(address _newRecipient) internal {
+        require(_newRecipient != address(0), "Invalid address");
+        platformFeeRecipient = _newRecipient;
+        emit PlatformFeeRecipientUpdated(_newRecipient);
+    }
