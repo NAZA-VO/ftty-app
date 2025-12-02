@@ -18,3 +18,9 @@ pragma solidity ^0.8.20;
         require(bps <= 10000, "Fee too high");
         _;
     }
+
+    constructor(address _recipient, uint96 _feeBps) validBps(_feeBps) {
+        require(_recipient != address(0), "Invalid recipient");
+        platformFeeRecipient = _recipient;
+        platformFeeBps = _feeBps;
+    }
