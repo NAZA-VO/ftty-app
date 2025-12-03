@@ -96,7 +96,12 @@ ftty-app/
 │   └── wagmi.js           # Wagmi and blockchain configuration
 ├── contracts/             # Smart contracts
 │   ├── NFTMinting.sol     # ERC721 NFT minting contract
-│   └── Payments.sol       # Payment processing contract with platform fees
+│   ├── Payments.sol       # Payment processing contract with platform fees
+│   ├── Listing.sol        # NFT marketplace listing contract
+│   ├── Bidding.sol        # Offer/bidding system for NFTs
+│   ├── GameItem.sol       # Game item NFT with updatable attributes
+│   ├── PlatformFee.sol    # Platform fee management contract
+│   └── Royalty.sol        # ERC-2981 royalty management contract
 ├── public/                # Static assets
 │   ├── helmet.jpeg
 │   ├── staff.jpeg
@@ -160,7 +165,7 @@ A whitepaper is available at `/public/whitepaper.pdf` and can be accessed via th
 
 ## Smart Contracts
 
-The project includes two Solidity smart contracts for core marketplace functionality:
+The project includes a comprehensive suite of Solidity smart contracts for marketplace functionality, NFT management, and payment processing:
 
 ### NFTMinting.sol (`SimpleMintNFT`)
 
@@ -220,7 +225,125 @@ A secure payment processing contract for marketplace transactions:
   - `emergencyWithdraw(address payable to, uint256 amount)`: Owner-only emergency fund recovery
   - `ownerCreditERC20(...)` / `withdrawERC20(...)`: ERC20 extension points for future token payments (currently stubbed)
 
-Both contracts use OpenZeppelin's battle-tested security libraries and follow best practices for secure smart contract development.
+### Listing.sol (`NFTMarketplace`)
+
+A non-custodial NFT marketplace listing contract:
+
+- **Features**:
+  - Create listings without transferring NFT custody
+  - Cancel active listings
+  - Buy NFTs with native token (ETH or chain currency)
+  - Configurable platform fees (basis points, e.g., 250 = 2.5%)
+  - Safe NFT transfers using OpenZeppelin's `IERC721`
+  - `ReentrancyGuard` protection
+  - `AccessControl` for admin role management (`MARKET_ADMIN`)
+
+- **Key Functions**:
+  - `createListing(address nft, uint256 tokenId, uint256 price)`: Create a new listing (requires marketplace approval)
+  - `cancelListing(uint256 listingId)`: Cancel an active listing (seller only)
+  - `buyItem(uint256 listingId)`: Purchase NFT at listed price (with platform fee deduction)
+  - `setPlatformFee(uint256 newFeePercent)`: Update platform fee percentage (admin only)
+  - `setFeeReceiver(address newReceiver)`: Update fee receiver address (admin only)
+
+- **Events**:
+  - `ItemListed`: Emitted when a new listing is created
+  - `ListingCancelled`: Emitted when a listing is cancelled
+  - `ItemSold`: Emitted when an NFT is purchased
+
+### Bidding.sol (`OfferContract`)
+
+An offer/bidding system for ERC-721 NFTs:
+
+- **Features**:
+  - Buyers lock funds as offers (non-custodial NFT handling)
+  - Sellers can accept offers
+  - Offer cancellation with automatic refund
+  - Platform fee on accepted offers
+  - Increase offer amounts
+  - `ReentrancyGuard` protection
+  - `AccessControl` for admin role management (`MARKET_ADMIN`)
+
+- **Key Functions**:
+  - `createOffer(address nft, uint256 tokenId)`: Create a new offer (locks ETH)
+  - `increaseOffer(uint256 offerId)`: Add more ETH to an existing offer
+  - `cancelOffer(uint256 offerId)`: Cancel offer and receive refund (offerer only)
+  - `acceptOffer(uint256 offerId)`: Accept offer, transfer NFT, and distribute funds (seller only)
+  - `setPlatformFee(uint256 newFeePercent)`: Update platform fee percentage (admin only)
+  - `setFeeReceiver(address newReceiver)`: Update fee receiver address (admin only)
+
+- **Events**:
+  - `OfferCreated`: Emitted when a new offer is created
+  - `OfferUpdated`: Emitted when an offer amount is increased
+  - `OfferCancelled`: Emitted when an offer is cancelled
+  - `OfferAccepted`: Emitted when an offer is accepted
+
+### GameItem.sol (`GameItemNFT`)
+
+An ERC-721 game item contract with updatable in-game attributes:
+
+- **Features**:
+  - Role-based minting (`GAME_ADMIN`)
+  - Updatable game attributes (level, power, rarity)
+  - Dynamic metadata (baseURI + token-specific attributes)
+  - `Pausable` for emergency control
+  - `AccessControl` for role management
+  - `ERC721URIStorage` for per-token metadata URIs
+
+- **Key Functions**:
+  - `mintGameItem(address to, uint256 level, uint256 power, uint256 rarity)`: Mint a new game item with initial stats (admin only)
+  - `updateStats(uint256 tokenId, uint256 level, uint256 power, uint256 rarity)`: Update game item attributes (admin only)
+  - `setBaseURI(string newBaseURI)`: Update base metadata URI (admin only)
+  - `pause()` / `unpause()`: Pause/unpause contract operations (admin only)
+
+- **Events**:
+  - `ItemMinted`: Emitted when a new game item is minted
+  - `StatsUpdated`: Emitted when game item stats are updated
+  - `BaseURIUpdated`: Emitted when base URI is updated
+
+### PlatformFee.sol (`PlatformFee`)
+
+A reusable platform fee management contract:
+
+- **Features**:
+  - Configurable platform fee in basis points (0-100%)
+  - Fee recipient address management
+  - Fee calculation helper function
+  - Can be inherited by marketplace contracts
+  - Input validation for fee percentages
+
+- **Key Functions**:
+  - `getPlatformFeeAmount(uint256 salePrice)`: Calculate platform fee amount for a given sale price
+  - `_setPlatformFee(uint96 newFeeBps)`: Internal function to update platform fee (for child contracts)
+  - `_setPlatformFeeRecipient(address newRecipient)`: Internal function to update fee recipient (for child contracts)
+
+- **Events**:
+  - `PlatformFeeUpdated`: Emitted when platform fee is updated
+  - `PlatformFeeRecipientUpdated`: Emitted when fee recipient is updated
+
+### Royalty.sol (`RoyaltyManager`)
+
+An ERC-2981 royalty management contract:
+
+- **Features**:
+  - Standard ERC-2981 royalty implementation
+  - Default royalty settings for all tokens
+  - Token-specific royalty overrides
+  - `AccessControl` for admin role management (`ROYALTY_ADMIN`)
+  - Basis points-based fee calculation (e.g., 500 = 5.00%)
+
+- **Key Functions**:
+  - `setDefaultRoyalty(address receiver, uint96 feeNumerator)`: Set default royalty for all tokens (admin only)
+  - `deleteDefaultRoyalty()`: Remove default royalty (admin only)
+  - `setTokenRoyalty(uint256 tokenId, address receiver, uint96 feeNumerator)`: Set royalty for specific token (admin only)
+  - `resetTokenRoyalty(uint256 tokenId)`: Reset token royalty to default (admin only)
+
+- **Events**:
+  - `DefaultRoyaltySet`: Emitted when default royalty is set
+  - `DefaultRoyaltyDeleted`: Emitted when default royalty is removed
+  - `TokenRoyaltySet`: Emitted when token-specific royalty is set
+  - `TokenRoyaltyReset`: Emitted when token royalty is reset
+
+All contracts use OpenZeppelin's battle-tested security libraries and follow best practices for secure smart contract development.
 
 ## 🚧 Development Status
 
