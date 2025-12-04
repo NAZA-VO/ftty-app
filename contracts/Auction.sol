@@ -148,6 +148,14 @@ auctionCount++;
         return auctionCount;
     }
 
+     // -----------------------
+    // BID
+    // -----------------------
+    /**
+     * @notice Place a bid for a particular auction. Payable in native currency.
+     * @param auctionId Auction identifier
+     */
+
 
 
 
