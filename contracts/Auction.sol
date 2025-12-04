@@ -60,4 +60,13 @@ contract AuctionHouse is ReentrancyGuard, AccessControl {
         uint256 endTime
     );
 
+    event BidPlaced(
+        uint256 indexed auctionId,
+        address indexed bidder,
+        uint256 amount,
+        address indexed previousHighestBidder,
+        uint256 previousHighestBid,
+        uint256 newEndTime
+    );
+
 
