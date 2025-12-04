@@ -131,7 +131,18 @@ contract AuctionHouse is ReentrancyGuard, AccessControl {
         require(IERC721(nft).ownerOf(tokenId) == msg.sender, "Not token owner");
         // marketplace doesn't take custody; seller must approve this contract to transfer on settlement
         // ownerOf check above ensures token exists and msg.sender is owner.
-
+auctionCount++;
+        auctions[auctionCount] = Auction({
+            seller: msg.sender,
+            nft: nft,
+            tokenId: tokenId,
+            reservePrice: reservePrice,
+            startTime: startTime,
+            endTime: endTime,
+            highestBidder: address(0),
+            highestBid: 0,
+            settled: false
+        });
 
 
 
