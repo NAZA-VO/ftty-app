@@ -31,4 +31,16 @@ contract AuctionHouse is ReentrancyGuard, AccessControl {
 
     uint256 public auctionCount;
 
+    struct Auction {
+        address seller;
+        address nft;
+        uint256 tokenId;
+        uint256 reservePrice; // minimum required to start sale
+        uint256 startTime; // unix timestamp
+        uint256 endTime;   // unix timestamp
+        address highestBidder;
+        uint256 highestBid;
+        bool settled;
+    }
+
 
