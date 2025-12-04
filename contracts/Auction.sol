@@ -26,4 +26,9 @@ contract AuctionHouse is ReentrancyGuard, AccessControl {
     uint96 public platformFeeBps;
     address public platformFeeRecipient;
 
+    // Anti-sniping time extension buffer (seconds)
+    uint256 public timeBuffer = 300; // e.g., 300s = 5 minutes
+
+    uint256 public auctionCount;
+
 
