@@ -49,4 +49,15 @@ contract AuctionHouse is ReentrancyGuard, AccessControl {
     // bidder => amount available to withdraw (refunds)
     mapping(address => uint256) public pendingReturns;
 
+    // Events
+    event AuctionCreated(
+        uint256 indexed auctionId,
+        address indexed seller,
+        address indexed nft,
+        uint256 tokenId,
+        uint256 reservePrice,
+        uint256 startTime,
+        uint256 endTime
+    );
+
 
