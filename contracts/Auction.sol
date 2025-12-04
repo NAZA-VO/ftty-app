@@ -181,6 +181,14 @@ auctionCount++;
             pendingReturns[previousHighest] += previousHighestBid;
         }
 
+        // anti-sniping: if bid placed within timeBuffer, extend
+        uint256 newEndTime = a.endTime;
+        if (a.endTime - block.timestamp <= timeBuffer) {
+            a.endTime = block.timestamp + timeBuffer;
+            newEndTime = a.endTime;
+        }
+
+
 
 
 
