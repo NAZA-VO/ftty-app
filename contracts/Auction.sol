@@ -156,6 +156,14 @@ auctionCount++;
      * @param auctionId Auction identifier
      */
 
+     function placeBid(uint256 auctionId) external payable nonReentrant {
+        Auction storage a = auctions[auctionId];
+        require(a.seller != address(0), "Auction does not exist");
+        require(block.timestamp >= a.startTime, "Auction not started");
+        require(block.timestamp < a.endTime, "Auction ended");
+        require(msg.value > 0, "Must send ETH");
+
+
 
 
 
