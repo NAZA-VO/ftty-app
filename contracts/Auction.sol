@@ -11,6 +11,12 @@ pragma solidity ^0.8.19;
  * - Anti-sniping: bids placed within timeBuffer extend the auction end.
  * - Platform fee (bps) and ERC-2981 royalties are supported on settlement.
  *
- * NOTE: test
+ * NOTE: test thoroughly on a testnet before production.
+ */
 
- 
+ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/token/common/ERC2981.sol";
+
+
