@@ -69,4 +69,17 @@ contract AuctionHouse is ReentrancyGuard, AccessControl {
         uint256 newEndTime
     );
 
+    event AuctionCancelled(uint256 indexed auctionId);
+    event AuctionSettled(
+        uint256 indexed auctionId,
+        address indexed winner,
+        uint256 amount
+    );
+
+// Constructor
+    constructor(address _platformFeeRecipient, uint96 _platformFeeBps) {
+        require(_platformFeeRecipient != address(0), "Invalid fee recipient");
+        require(_platformFeeBps <= 10000, "Bps > 10000");
+
+
 
