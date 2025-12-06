@@ -259,6 +259,11 @@ auctionCount++;
                 royaltyReceiver = receiver;
                 royaltyAmount = royalty;
             }
+            } catch {
+            // token doesn't implement ERC-2981 or call failed -> ignore royalties
+            royaltyAmount = 0;
+            royaltyReceiver = address(0);
+        }
 
 
 
