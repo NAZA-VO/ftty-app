@@ -274,6 +274,12 @@ uint256 sellerProceeds = totalAmount - totalDeductions;
  // Transfer NFT from seller to winner. Seller must have approved this contract.
         IERC721(a.nft).safeTransferFrom(a.seller, winner, a.tokenId);
 
+// Pay royalty first (if any)
+        if (royaltyAmount > 0 && royaltyReceiver != address(0)) {
+            (bool rSent, ) = payable(royaltyReceiver).call{value: royaltyAmount}("");
+            require(rSent, "Royalty transfer failed");
+        }
+
 
 
 
