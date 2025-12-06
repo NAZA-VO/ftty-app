@@ -269,6 +269,7 @@ auctionCount++;
         uint256 totalDeductions = platformFee + royaltyAmount;
         require(totalDeductions <= totalAmount, "Deductions exceed amount");
 
+uint256 sellerProceeds = totalAmount - totalDeductions;
 
 
 
