@@ -243,6 +243,8 @@ auctionCount++;
             emit AuctionSettled(auctionId, address(0), 0);
             return;
         }
+              uint256 totalAmount = a.highestBid;
+        address winner = a.highestBidder;
 
 
 
