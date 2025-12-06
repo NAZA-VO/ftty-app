@@ -265,6 +265,11 @@ auctionCount++;
             royaltyReceiver = address(0);
         }
 
+        // Ensure we don't double-count: total deductions must be <= totalAmount
+        uint256 totalDeductions = platformFee + royaltyAmount;
+        require(totalDeductions <= totalAmount, "Deductions exceed amount");
+
+
 
 
 
