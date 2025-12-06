@@ -253,6 +253,13 @@ auctionCount++;
         uint256 royaltyAmount = 0;
         address royaltyReceiver = address(0);
 
+        try ERC2981(a.nft).royaltyInfo(a.tokenId, totalAmount) returns (address receiver, uint256 royalty) {
+            // only apply if receiver not zero and royalty > 0
+            if (receiver != address(0) && royalty > 0) {
+                royaltyReceiver = receiver;
+                royaltyAmount = royalty;
+            }
+
 
 
 
