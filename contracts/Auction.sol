@@ -249,6 +249,10 @@ auctionCount++;
         // Calculate platform fee
         uint256 platformFee = (totalAmount * platformFeeBps) / 10000;
 
+        // Calculate royalty (if token supports ERC-2981)
+        uint256 royaltyAmount = 0;
+        address royaltyReceiver = address(0);
+
 
 
 
