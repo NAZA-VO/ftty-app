@@ -286,6 +286,14 @@ uint256 sellerProceeds = totalAmount - totalDeductions;
             require(pSent, "Platform fee transfer failed");
         }
 
+        // Pay seller
+        (bool sSent, ) = payable(a.seller).call{value: sellerProceeds}("");
+        require(sSent, "Seller transfer failed");
+
+        emit AuctionSettled(auctionId, winner, totalAmount);
+    }
+
+
 
 
 
