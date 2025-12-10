@@ -301,6 +301,11 @@ function getAuction(uint256 auctionId) external view returns (Auction memory) {
         return auctions[auctionId];
     }
 
+    // fallback to receive ETH only via bidding or direct refunds (no direct receive)
+    receive() external payable {
+        revert("Direct deposits not allowed");
+    }
+
 
 
 
