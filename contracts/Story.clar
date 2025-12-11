@@ -58,3 +58,9 @@
 (define-read-only (get-story)
     (ok (var-get story))
 )
+;; ------------------------------------------------------------
+;; PUBLIC VIEW: Get the number of entries
+;; ------------------------------------------------------------
+(define-read-only (story-length)
+    (ok (len (var-get story)))
+)
