@@ -6,3 +6,10 @@
 ;;  - the sender (converted to ASCII text)
 ;;  - the block timestamp (Clarity 4 feature)
 ;; ------------------------------------------------------------
+
+;; Data store for the story – an increasing list of entries
+(define-data-var story (list 200 { 
+    word: (string-ascii 32),
+    sender: (string-ascii 256),
+    timestamp: uint
+}) 
