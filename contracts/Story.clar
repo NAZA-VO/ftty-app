@@ -13,3 +13,7 @@
     sender: (string-ascii 256),
     timestamp: uint
 }) 
+
+;; initial empty list
+    (list)
+)
