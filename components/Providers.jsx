@@ -17,7 +17,10 @@ if (!projectId || projectId === "YOUR_PROJECT_ID") {
 createAppKit({
   networks: [mainnet],
   projectId: projectId || "YOUR_PROJECT_ID",
-  enableWalletConnect: false, // Disable QR code option
+  enableWallets: true, // Keep wallet buttons enabled
+  features: {
+    connectMethodsOrder: ["wallet"], // Only show wallet buttons, no QR/social/email
+  },
 });
 
 export default function Providers({ children }) {
