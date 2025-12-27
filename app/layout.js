@@ -1,6 +1,6 @@
 // app/layout.js
 import './globals.css';
-import { Providers } from '../components/Providers'
+import Providers from '../components/Providers'
 
 export const metadata = {
   title: 'FTTY - Gaming Assets Crypto Marketplace',
