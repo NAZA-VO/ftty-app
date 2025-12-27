@@ -76,13 +76,5 @@ contract RoyaltyManager is ERC2981, AccessControl {
      * Only DEFAULT_ADMIN_ROLE can grant/revoke roles (inherited from AccessControl)
      */
 
-    /**
-     * @notice Override supportsInterface to include ERC2981 & AccessControl
-     */
-     /**
-     * @notice Override supportsInterface to include ERC2981 & AccessControl
-     */
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC2981, AccessControl) returns (bool) {
-        return super.supportsInterface(interfaceId);
-    }
+    
 }
