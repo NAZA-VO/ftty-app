@@ -14,6 +14,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Features />
+      <FeaturedAssets />
       <Chains />
       <Community />
       <Roadmap />
