@@ -5,6 +5,7 @@ import { FaRocket, FaGamepad, FaCoins } from 'react-icons/fa';
 import {  
   AppKitConnectButton, 
 } from "@reown/appkit/react";
+import "@reown/appkit-wallet-button/react";
 
 const Hero = () => {
   const heroRef = useRef(null);
