@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useAppKitWallet } from "@reown/appkit-wallet-button/react";
 import { FaRocket } from "react-icons/fa";
 
@@ -13,6 +14,10 @@ export default function ConnectWalletBtn() {
       console.error("Connection error:", error);
     },
   });
+
+  useEffect(() => {
+    console.log("AppKit Wallet State:", { isReady, isPending, isSuccess, data });
+  }, [isReady, isPending, isSuccess, data]);
 
   const formatAddress = (address) => {
     if (!address) return "";
@@ -42,7 +47,7 @@ export default function ConnectWalletBtn() {
   return (
     <button
       onClick={handleConnect}
-      disabled={!isReady || isPending}
+      disabled={isPending}
       className="bg-ftty-orange hover:bg-ftty-orange-light text-white px-8 py-4 rounded-full text-lg font-medium flex items-center justify-center gap-2 transform transition-all hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-ftty-orange/20 disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <FaRocket />
